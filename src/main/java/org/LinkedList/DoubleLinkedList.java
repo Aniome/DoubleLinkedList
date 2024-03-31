@@ -21,18 +21,33 @@ public class DoubleLinkedList<T> {
         }
         size++;
     }
-    public void add(int index, T data){
-        Node<T> node = head;
-        for (int i = 0; i < index; i++){
-            node = node.next;
+    public boolean add(int index, T data){
+        if (index >= size)
+            return false;
+        //
+        if (head == null){
+            add(data);
+        } else {
+            Node<T> New = new Node<>(data);
+            Node<T> next = head;
+            for (int i = 0; i < index; i++){
+                next = next.next;
+            }
+            if (next.previous == null){
+                New.previous = null;
+                New.next = next;
+                next.previous = New;
+                head = New;
+            } else {
+                Node<T> previous = next.previous;
+                previous.next = New;
+                New.next = next;
+                New.previous = previous;
+                next.previous = New;
+            }
+            size++;
         }
-        Node<T> New = new Node<>(data);
-        Node<T> next = node.next;
-        New.next = next;
-        New.previous = node;
-        next.previous = New;
-        node.next = New;
-        size++;
+        return true;
     }
     /*public void add(int index, T data)
     public boolean remove(T data)
