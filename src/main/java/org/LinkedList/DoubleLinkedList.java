@@ -9,14 +9,29 @@ public class DoubleLinkedList<T> {
     public void add(T data){
         if (head == null){
             head = new Node<>(data);
+            head.next = null;
             head.previous = null;
             tail = head;
         } else {
             Node<T> node = new Node<>(data);
             tail.next = node;
             node.previous = tail;
+            node.next = null;
             tail = node;
         }
+        size++;
+    }
+    public void add(int index, T data){
+        Node<T> node = head;
+        for (int i = 0; i < index; i++){
+            node = node.next;
+        }
+        Node<T> New = new Node<>(data);
+        Node<T> next = node.next;
+        New.next = next;
+        New.previous = node;
+        next.previous = New;
+        node.next = New;
         size++;
     }
     /*public void add(int index, T data)
