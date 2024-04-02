@@ -24,7 +24,6 @@ public class DoubleLinkedList<T> {
     public boolean add(int index, T data){
         if (index >= size)
             return false;
-        //
         if (head == null){
             add(data);
         } else {
@@ -49,8 +48,32 @@ public class DoubleLinkedList<T> {
         }
         return true;
     }
-    /*public void add(int index, T data)
-    public boolean remove(T data)
+
+    public boolean remove(T data){
+        Node<T> node = head;
+        for (int i = 0; i < size; i++) {
+            if (node.data.equals(data)){
+                if (node.previous != null){
+                    Node<T> previous = node.previous;
+                    previous.next = node.next;
+                } else {
+                    head = node.next;
+                }
+                if (node.next != null){
+                    Node<T> next = node.next;
+                    next.previous = node.previous;
+                } else {
+                    tail = node.previous;
+                }
+                size--;
+                return true;
+            }
+            node = node.next;
+        }
+        return false;
+    }
+
+    /*
     private void remove(Node<T> node, Node<T> prev)
     public T removeByIndex(int index)
     public SingleLinkedList<T> inversion()
