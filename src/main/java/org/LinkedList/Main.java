@@ -7,7 +7,7 @@ public class Main {
         doubleLinkedList.add(2);
         doubleLinkedList.add(1, 1);
         doubleLinkedList.add(3);
-        doubleLinkedList.remove(0);
+        doubleLinkedList.removeByIndex(3);
         System.out.println(doubleLinkedList);
 
 

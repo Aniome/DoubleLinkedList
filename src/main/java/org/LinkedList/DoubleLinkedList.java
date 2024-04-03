@@ -53,19 +53,7 @@ public class DoubleLinkedList<T> {
         Node<T> node = head;
         for (int i = 0; i < size; i++) {
             if (node.data.equals(data)){
-                if (node.previous != null){
-                    Node<T> previous = node.previous;
-                    previous.next = node.next;
-                } else {
-                    head = node.next;
-                }
-                if (node.next != null){
-                    Node<T> next = node.next;
-                    next.previous = node.previous;
-                } else {
-                    tail = node.previous;
-                }
-                size--;
+                remove(node);
                 return true;
             }
             node = node.next;
@@ -73,9 +61,39 @@ public class DoubleLinkedList<T> {
         return false;
     }
 
+    public T removeByIndex(int index){
+        //index == 0, index == size
+        if (index >= size || index < 0){
+            return null;
+        }
+        Node<T> node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        remove(node);
+        return node.data;
+    }
+
+    private void remove(Node<T> node) {
+        if (node.previous != null){
+            Node<T> previous = node.previous;
+            previous.next = node.next;
+        } else {
+            head = node.next;
+        }
+
+        if (node.next != null){
+            Node<T> next = node.next;
+            next.previous = node.previous;
+        } else {
+            tail = node.previous;
+        }
+
+        size--;
+    }
+
     /*
     private void remove(Node<T> node, Node<T> prev)
-    public T removeByIndex(int index)
     public SingleLinkedList<T> inversion()
     public T get(int index)
     public T set(int index, T data)
