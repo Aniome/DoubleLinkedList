@@ -92,9 +92,32 @@ public class DoubleLinkedList<T> {
         size--;
     }
 
+    public DoubleLinkedList<T> inversion(){
+        Node<T> previous, next = null, current = null;
+        for (int i = 0; i < size; i++) {
+            if (i == 0){
+                current = head;
+                next = current.next;
+                tail = current;
+                tail.previous = next;
+                tail.next = null;
+            } else if (i == size - 1){
+                previous = current;
+                current = next;
+                current.next = previous;
+                current.previous = null;
+                head = current;
+            } else {
+                previous = current;
+                current = next;
+                next = next.next;
+                current.next = previous;
+            }
+        }
+        return this;
+    }
+
     /*
-    private void remove(Node<T> node, Node<T> prev)
-    public SingleLinkedList<T> inversion()
     public T get(int index)
     public T set(int index, T data)
     private Node<T> getNode(int index)
