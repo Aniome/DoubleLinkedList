@@ -117,6 +117,14 @@ public class DoubleLinkedList<T> {
         return this;
     }
 
+    private Node<T> getNode(int index){
+        Node<T> node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        return node;
+    }
+
     /*
     public T get(int index)
     public T set(int index, T data)
