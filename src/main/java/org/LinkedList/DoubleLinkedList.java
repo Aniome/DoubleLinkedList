@@ -125,8 +125,11 @@ public class DoubleLinkedList<T> {
         return node;
     }
 
+    public T get(int index){
+        return getNode(index).data;
+    }
+
     /*
-    public T get(int index)
     public T set(int index, T data)
     private Node<T> getNode(int index)
     public int size()
