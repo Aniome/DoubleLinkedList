@@ -131,10 +131,7 @@ public class DoubleLinkedList<T> {
 
     /*
     public T set(int index, T data)
-    private Node<T> getNode(int index)
     public int size()
-    @Override
-    public String toString()
     public boolean contains(T data)
     public void clear()
     public int indexOf(T data)
