@@ -129,8 +129,13 @@ public class DoubleLinkedList<T> {
         return getNode(index).data;
     }
 
+    public T set(int index, T data){
+        Node<T> node = getNode(index);
+        node.data = data;
+        return node.data;
+    }
+
     /*
-    public T set(int index, T data)
     public int size()
     public boolean contains(T data)
     public void clear()
