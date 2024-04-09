@@ -135,8 +135,11 @@ public class DoubleLinkedList<T> {
         return node.data;
     }
 
+    public int size(){
+        return size;
+    }
+
     /*
-    public int size()
     public boolean contains(T data)
     public void clear()
     public int indexOf(T data)
