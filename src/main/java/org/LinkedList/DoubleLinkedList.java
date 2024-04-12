@@ -150,8 +150,21 @@ public class DoubleLinkedList<T> {
         return false;
     }
 
+    public void clear(){
+        Node<T> node = head;
+        for (int i = 0; i < size; i++) {
+            Node<T> previous = node;
+            node = node.next;
+            previous.next = null;
+            previous.previous = null;
+            previous.data = null;
+        }
+        tail = null;
+        head = null;
+        size = 0;
+    }
+
     /*
-    public void clear()
     public int indexOf(T data)
     public int lastIndexOf(T data)
     */
