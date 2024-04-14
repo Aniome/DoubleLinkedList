@@ -141,7 +141,7 @@ public class DoubleLinkedList<T> {
 
     public boolean contains(T data){
         Node<T> node = head;
-        for (int i = 0; i <= size; i++) {
+        for (int i = 0; i < size; i++) {
             if (node.data.equals(data)){
                 return true;
             }
@@ -164,8 +164,18 @@ public class DoubleLinkedList<T> {
         size = 0;
     }
 
+    public int indexOf(T data){
+        Node<T> node = head;
+        for (int i = 0; i < size; i++) {
+            if (node.data.equals(data)){
+                return i;
+            }
+            node = node.next;
+        }
+        return -1;
+    }
+
     /*
-    public int indexOf(T data)
     public int lastIndexOf(T data)
     */
 
