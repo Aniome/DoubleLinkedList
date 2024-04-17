@@ -92,7 +92,7 @@ public class DoubleLinkedList<T> {
         size--;
     }
 
-    public DoubleLinkedList<T> inversion(){
+    public void inversion(){
         Node<T> previous, next = null, current = null;
         for (int i = 0; i < size; i++) {
             if (i == 0){
@@ -114,7 +114,6 @@ public class DoubleLinkedList<T> {
                 current.next = previous;
             }
         }
-        return this;
     }
 
     private Node<T> getNode(int index){
@@ -175,9 +174,17 @@ public class DoubleLinkedList<T> {
         return -1;
     }
 
-    /*
-    public int lastIndexOf(T data)
-    */
+    public int lastIndexOf(T data){
+        int index = -1;
+        Node<T> node = head;
+        for (int i = 0; i < size; i++) {
+            if (node.data.equals(data)){
+                index = i;
+            }
+            node = node.next;
+        }
+        return index;
+    }
 
     @Override
     public String toString() {
